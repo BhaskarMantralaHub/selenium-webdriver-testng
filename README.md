@@ -1,2 +1,2 @@
-# selenium-webdriver-testng
-selenium-webdriver-testng
+# Selenium WebDriver TestNG Java
+
