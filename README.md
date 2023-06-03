@@ -80,7 +80,7 @@ Access property values below from test:
 System.getProperty("current.env");
 ```
 
-### Parameters from TestNG xml to Suite level
+### Parameters from TestNG xml in Suite level
 
 ```
 <suite name="Suite" >
@@ -98,7 +98,7 @@ public void test(String customerName) {
 }
 ```
 
-### Parameters from TestNG xml to Test level
+### Parameters from TestNG xml in Test level
 
 ```
 <suite name="Suite" >
