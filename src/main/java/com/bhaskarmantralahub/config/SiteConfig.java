@@ -1,14 +1,15 @@
 package com.bhaskarmantralahub.config;
 
+import com.bhaskarmantralahub.enums.Env;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
 import java.util.Map;
 
 public class SiteConfig {
-    private static final String CONFIG_FILE = System.getProperty("configFile", "dev.yaml");
+    private static final String CONFIG_FILE = System.getProperty("configFile", "site-config.yaml");
 
-    private static final Map<String, Object> configMap;
+    private static final Map<Env, EnvConfig> configMap;
 
     static {
         System.out.println("Inside static block");
@@ -17,8 +18,15 @@ public class SiteConfig {
         configMap = yaml.load(inputStream);
     }
 
-    public static Object getProperty(String key) {
-        return configMap.get(key);
+    public static EnvConfig read() {
+        System.out.println(configMap);
+        return configMap.get(Env.DEV);
     }
+
+//    public static Object getProperty(String key) {
+//        System.out.println(configMap.toString());
+//        System.out.println(configMap.get(key));
+//        return configMap.get(key);
+//    }
 }
 

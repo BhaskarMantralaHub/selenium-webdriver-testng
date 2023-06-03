@@ -1,0 +1,11 @@
+DEV:
+  url: https://the-internet.herokuapp.com/add_remove_elements/
+
+PROD:
+  url: https://the-internet.herokuapp.com/dropdown
+
+QA:
+  url: https://the-internet.herokuapp.com/checkboxes
+
+STAGE:
+  url: https://the-internet.herokuapp.com/context_menu
