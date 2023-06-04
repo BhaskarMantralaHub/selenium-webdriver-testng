@@ -1,6 +1,7 @@
 package com.bhaskarmantralahub;
 
 import lombok.ToString;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
@@ -23,10 +24,14 @@ public class FactoryTest {
         return new FactoryTest[]{new FactoryTest("Hey"), new FactoryTest("Hola")};
     }
 
-    @Factory
-    public static Object[] factoryMethod1() {
-        return new FactoryTest[]{new FactoryTest("Hello")};
+    @Factory(dataProvider = "my-data")
+    public static Object[] factoryMethod1(String wish) {
+        return new FactoryTest[]{new FactoryTest(wish)};
     }
 
+    @DataProvider(name = "my-data")
+    public static Object[] dataProvider() {
+        return new String[]{"Hello", "Namste"};
+    }
 }
 

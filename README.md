@@ -279,7 +279,8 @@ public class FactoryTest {
 
 * To preserve order of execution
 ```java
-@Factory(de)
+@Factory
+@Test(dependsOnMethods = "factoryMethodHey")
 public static Object[] factoryMethodHello() {
     return new FactoryTest[]{new FactoryTest("Hello")};
 }

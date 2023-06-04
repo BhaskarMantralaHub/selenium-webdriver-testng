@@ -10,6 +10,10 @@ public class SortStringByLengthTest {
     @Test
     public void sumNumbersFromString() {
         final String[] input = {"may", "august", "april", "june"};
-        Arrays.stream(input).sorted((a, b) -> Integer.compare(a.length(), b.length())).forEach(System.out::println);
+        Arrays.stream(input).sorted((a, b) -> {
+            if (a.length() > b.length()) return 1;
+            else if (a.length() < b.length()) return -1;
+            return 0;
+        }).forEach(System.out::println);
     }
 }
