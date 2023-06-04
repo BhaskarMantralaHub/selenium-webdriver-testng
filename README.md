@@ -129,7 +129,7 @@ public void test(@Optional("optional name") String customerName) {
 }
 ```
 
-### @BeforeTest
+### @BeforeTest (Before running tests under test tag in testng.xml)
 
 You want to set up some common preconditions before executing a group of tests belonging to a specific <test> tag in your TestNG XML file.
 
@@ -192,4 +192,101 @@ public class MyTest {
 
 ```
 
+### @BeforeClass (Before running each class of tests under test tag in testng.xml)
+
+You want to perform setup actions once before executing any test methods in a test class.
+
+```java
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class MyTest {
+
+    @BeforeClass
+    public void setUp() {
+        // Perform setup actions once before executing any test method
+        // e.g., initialize database connection, load test data, etc.
+    }
+
+    @Test
+    public void test1() {
+        // Test case 1
+    }
+
+    @Test
+    public void test2() {
+        // Test case 2
+    }
+}
+
+```
+
+### @BeforeTest vs @BeforeClass
+
+* @BeforeTest will be executed only once per test tag
+* @BeforeClass will be executed once per class
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+    <test thread-count="5" name="Test">
+        <classes>
+            <!-- @BeforeTest will be executed only once per test tag-->
+            <!-- @BeforeClass will be executed once per class-->
+            <class name="com.bhaskarmantralahub.ChildTest"/>
+            <class name="com.bhaskarmantralahub.ParentTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
+```
+
+
+### What is Factory annotation?
+
+* @Factory defines and creates tests dynamically at runtime.
+
+* A @Factory method returns objects that will be used by TestNG as Test classes. 
+TestNG will scan for test methods in these classes and run those tests.
+* The factory method can receive parameters just like @Test.
+* Factory method should return an array of Object i.e. Object []
+```java
+import org.testng.annotations.Factory;
+import org.testng.annotations.Test;
+
+public class FactoryTest {
+
+    private final String param;
+
+    public FactoryTest(String param) {
+        this.param = param;
+    }
+
+    @Test(priority = 0)
+    public void test() {
+        System.out.println("My name is " + this.param);
+    }
+
+    @Factory
+    public static Object[] factoryMethod() {
+        return new FactoryTest[]{new FactoryTest("Hello"), new FactoryTest("Hey"), new FactoryTest("Hola")};
+    }
+
+}
+```
+
+#### **Note:** Here order of execution is not guaranteed
+
+* To preserve order of execution
+```java
+@Factory(de)
+public static Object[] factoryMethodHello() {
+    return new FactoryTest[]{new FactoryTest("Hello")};
+}
+
+@Factory
+public static Object[] factoryMethodHey() {
+        return new FactoryTest[]{new FactoryTest("Hey")};
+} 
+```
 

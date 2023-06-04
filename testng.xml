@@ -3,7 +3,10 @@
 <suite name="Suite" >
     <test thread-count="5" name="Test">
         <classes>
+            <!-- @BeforeTest will be executed only once here-->
+            <!-- @BeforeClass will be executed once per class-->
             <class name="com.bhaskarmantralahub.ChildTest"/>
+            <class name="com.bhaskarmantralahub.ParentTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
