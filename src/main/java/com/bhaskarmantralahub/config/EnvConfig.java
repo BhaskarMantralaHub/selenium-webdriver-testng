@@ -9,5 +9,5 @@ import lombok.*;
 @Setter
 @ToString
 public class EnvConfig {
-    String url;
+    Env env;
 }
