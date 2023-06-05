@@ -301,3 +301,17 @@ public static Object[] factoryMethodHey() {
 ```
 
 Injecting **ITestResult** object for all listener event methods and hook methods
+
+
+### Annotations vs Listeners
+
+Annotations:
+Annotations in TestNG are built-in markers that you can apply directly to your test classes, test methods, or configuration methods. They provide a declarative way to specify test configurations, dependencies, and behaviors. TestNG offers a wide range of annotations such as @Test, @BeforeMethod, @AfterMethod, @DataProvider, @Parameters, and more.
+
+Annotations are useful for defining test-related configurations in a concise and readable manner. 
+
+
+Listeners:
+Listeners, on the other hand, are custom classes that implement TestNG listener interfaces. These interfaces define callback methods that get invoked at different stages of the test execution lifecycle. By implementing these methods, you can hook into the test execution process and perform custom actions or validations.
+
+
