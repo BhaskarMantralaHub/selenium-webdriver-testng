@@ -19,7 +19,7 @@ public class TestBase {
 
     @BeforeTest
     protected void logs() {
-        LogAppender.saveSystemLogsToFile();
+//        LogAppender.saveSystemLogsToFile();
     }
 
     @AfterSuite

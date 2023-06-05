@@ -31,6 +31,6 @@
     <root level="info">
         <appender-ref ref="Console" />
         <appender-ref ref="FILE" />
-        <appender-ref ref="SYSTEM_OUT" />
+<!--        <appender-ref ref="SYSTEM_OUT" />-->
     </root>
 </configuration>

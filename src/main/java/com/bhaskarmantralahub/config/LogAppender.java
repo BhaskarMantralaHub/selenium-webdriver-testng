@@ -6,7 +6,6 @@ public class LogAppender {
 
     public static FileOutputStream fileOutputStream;
     public static PrintStream filePrintStream;
-
     public static void saveSystemLogsToFile() {
         File logFile = new File("logs/console.log");
 
