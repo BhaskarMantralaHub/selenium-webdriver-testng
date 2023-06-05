@@ -300,4 +300,4 @@ public static Object[] factoryMethodHey() {
     }
 ```
 
-Injecting **ITestResult** object for all listener methods and hook methods
+Injecting **ITestResult** object for all listener event methods and hook methods
