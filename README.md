@@ -291,3 +291,13 @@ public static Object[] factoryMethodHey() {
 } 
 ```
 
+### Dependency Injection
+
+```java
+ @BeforeMethod
+    public void beforeMethod(ITestResult testResult) {
+        System.out.println("Inside Before Method of " + testResult.getMethod().getMethodName());
+    }
+```
+
+Injecting **ITestResult** object for all listener methods and hook methods

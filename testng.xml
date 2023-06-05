@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" >
+    <listeners>
+        <listener class-name="com.bhaskarmantralahub.listeners.TestListener"/>
+    </listeners>
     <test thread-count="5" name="Test">
         <classes>
             <!-- @BeforeTest will be executed only once here-->
             <!-- @BeforeClass will be executed once per class-->
-            <class name="com.bhaskarmantralahub.ChildTest"/>
-            <class name="com.bhaskarmantralahub.ParentTest"/>
+            <class name="com.bhaskarmantralahub.DataProviderTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
