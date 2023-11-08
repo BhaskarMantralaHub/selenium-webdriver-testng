@@ -21,7 +21,7 @@ public class LoadWebDriver {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().clearDriverCache().clearResolutionCache().setup();
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
@@ -29,16 +29,16 @@ public class LoadWebDriver {
 
             options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-            options.addArguments("--window-size=1920,1080");
-//            options.addArguments("--no-sandbox");
-//            options.addArguments("--headless");
-//            options.addArguments("--disable-gpu");
-//            options.addArguments("--disable-crash-reporter");
-            options.addArguments("--disable-extensions");
-//            options.addArguments("--disable-in-process-stack-traces");
-            options.addArguments("--disable-logging");
-//            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--log-level=3");
+//            options.addArguments("--window-size=1920,1080");
+////            options.addArguments("--no-sandbox");
+////            options.addArguments("--headless");
+////            options.addArguments("--disable-gpu");
+////            options.addArguments("--disable-crash-reporter");
+//            options.addArguments("--disable-extensions");
+////            options.addArguments("--disable-in-process-stack-traces");
+//            options.addArguments("--disable-logging");
+////            options.addArguments("--disable-dev-shm-usage");
+//            options.addArguments("--log-level=3");
 
             Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
             driver = new ChromeDriver(options);

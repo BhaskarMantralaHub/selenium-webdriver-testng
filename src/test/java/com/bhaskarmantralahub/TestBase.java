@@ -12,9 +12,9 @@ public class TestBase {
 
     @BeforeSuite
     protected void launchBrowser() {
-        System.out.println("Inside Launch browser");
+//        System.out.println("Inside Launch browser");
         driver = LoadWebDriver.getDriver();
-        driver.get("https://the-internet.herokuapp.com/forgot_password");
+//        driver.get("https://the-internet.herokuapp.com/forgot_password");
     }
 
     @BeforeTest

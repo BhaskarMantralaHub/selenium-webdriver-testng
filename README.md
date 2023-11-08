@@ -314,4 +314,21 @@ Annotations are useful for defining test-related configurations in a concise and
 Listeners:
 Listeners, on the other hand, are custom classes that implement TestNG listener interfaces. These interfaces define callback methods that get invoked at different stages of the test execution lifecycle. By implementing these methods, you can hook into the test execution process and perform custom actions or validations.
 
+## Run tests using Selenoid
+
+* Install Docker
+* Create browsers.json file and place under $HOME/config directory -  [browsers.json](browsers.json)
+* Create docker-compose file as - [selenoid-docker-compose.yml](selenoid-docker-compose.yml)
+* Run it as 
+  
+```shell
+docker-compose -f selenoid-docker-compose.yml up -d
+```
+
+```shell
+docker-compose -f selenoid-docker-compose.yml down
+```
+
+* selenoid runs on 4444 port 
+* selenoid-ui runs on 8090 port
 

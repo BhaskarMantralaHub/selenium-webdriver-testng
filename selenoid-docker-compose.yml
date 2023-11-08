@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  selenoid:
+    image: aerokube/selenoid:latest-release
+    container_name: selenoid
+    network_mode: bridge
+    ports:
+      - "4444:4444"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $HOME/config/:/etc/selenoid/:ro
+      - $HOME/video/:/opt/selenoid/video/
+    environment:
+      - OVERRIDE_VIDEO_OUTPUT_DIR=$HOME/video/
+    restart: unless-stopped
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest-release
+    container_name: selenoid-ui
+    restart: unless-stopped
+    network_mode: bridge
+    links:
+      - selenoid
+    depends_on:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
+
+  video-recorder:
+    image: aerokube/video-recorder:latest-release
+    container_name: video-recorder
+    restart: unless-stopped
+    depends_on:
+      - selenoid
+    environment:
+      - OVERRIDE_VIDEO_OUTPUT_DIR=$HOME/video/
+
+  selenoid_chromium_vnc:
+    image: sskorol/selenoid_chromium_vnc:100.0
+    container_name: selenoid_chromium_vnc
+    restart: unless-stopped
+    depends_on:
+      - selenoid
+    environment:
+      - SELENOID_URI= http://selenoid:4444
+      - SELENOID_VNC_ENABLED= 1
